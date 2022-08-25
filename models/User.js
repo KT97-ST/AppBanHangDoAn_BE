@@ -10,6 +10,7 @@ const userSchema = new mongoose.Schema({
     Address: String,
     PhoneNumber: String,
     Active: Boolean,
+    Permissions: String,
     RegisterDate: Date
 });
 

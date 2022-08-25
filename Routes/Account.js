@@ -35,6 +35,7 @@ module.exports = function(app){
                                 Email   :   req.body.Email,
                                 Address :   req.body.Address,
                                 PhoneNumber:req.body.PhoneNumber,
+                                Permissions: '1',
                                 Active: true,
                                 RegisterDate: Date.now()
                             });
