@@ -1,0 +1,204 @@
+<div id="form_AddNewProduct" class="form-group">
+    <input type="file" class="form-control" id="hinhsp" /> <br />
+    <input
+      type="text"
+      class="form-control"
+      id="productName"
+      placeholder="Product name"
+    />
+    <br />
+    <input
+      type="button"
+      class="btn btn-primary"
+      id="btn_Add_New_Product"
+      value="Add new"
+    />
+    <input type="hidden" id="file_ImageProduct" />
+    <img id="ImgProductNew" width="100px" src="" />
+  </div>
+  
+  <ul class="list-group" id="list_Product"></ul>
+  
+  <div id="form_UpdateProduct" class="form-group">
+    <img id="product_Detail" src="" width="100px" />
+    <input type="file" class="form-control" id="hinhsp_Detail" /> <br />
+    <input type="text" class="form-control" id="productName_Detail" /> <br />
+    <input
+      type="button"
+      class="btn btn-success"
+      id="btn_Update_Product"
+      value="Update"
+    />
+    <input
+      type="button"
+      class="btn btn-danger"
+      id="btn_Delete_Product"
+      value="Delete"
+    />
+    <input type="hidden" id="file_ImageProduct_Details" />
+    <input type="hidden" id="idProduct_Detail" />
+  </div>
+  
+  <script>
+    $(document).ready(function () {
+      var url = "http://localhost:3000";
+  
+      function loadProduct() {
+        $.post(url + "/product", function (data2) {
+          if (data2.kq == 1) {
+            $("#list_Product").html("");
+            data2.ProductList.forEach(function (product) {
+              $("#list_Product").append(
+                `
+                        <li class="list-group-item product" srcHinh="` +
+                  product.Image +
+                  `" productID="` +
+                  product._id +
+                  `">` +
+                  product.Name +
+                  `</li>
+                        `
+              );
+            });
+          } else {
+            console.log("No ok");
+          }
+        });
+      }
+  
+      loadProduct();
+  
+      $("#hinhsp").change(function () {
+        var data = new FormData();
+        jQuery.each(jQuery("#hinhsp")[0].files, function (i, file) {
+          console.log("hinhdaidien");
+          data.append("hinhdaidien", file);
+        });
+  
+        jQuery.ajax({
+          url: url + "/uploadFile",
+          data: data,
+          cache: false,
+          contentType: false,
+          processData: false,
+          method: "POST",
+          type: "POST", // For jQuery < 1.9
+          success: function (data) {
+            if (data.kq == 1) {
+              //console.log(data);
+              $("#file_ImageProduct").val(data.urlFile.filename);
+              $("#ImgProductNew").attr(
+                "src",
+                url + `/upload/` + data.urlFile.filename
+              );
+            } else {
+              alert("Upload fail!");
+            }
+          },
+        });
+      });
+  
+      $("#hinhsp_Detail").change(function () {
+        var data = new FormData();
+        jQuery.each(jQuery("#hinhsp_Detail")[0].files, function (i, file) {
+          //console.log("hinhdaidien");
+          data.append("hinhdaidien", file);
+        });
+  
+        jQuery.ajax({
+          url: url + "/uploadFile",
+          data: data,
+          cache: false,
+          contentType: false,
+          processData: false,
+          method: "POST",
+          type: "POST", // For jQuery < 1.9
+          success: function (data) {
+              if(data.kq==1){
+                  //console.log(data);
+                  //$("#imgAvatar").attr("src","upload/" + data.file);
+                  $("#product_Detail").attr("src",url+`/upload/`+data.urlFile.filename);
+                  $("#file_ImageProduct_Details").val(data.urlFile.filename);
+              }else{
+                  console.log("Upload fail!");
+              }
+          },
+        });
+      });
+  
+      $("#btn_Add_New_Product").click(function () {
+        if (
+          $("#productName").val().length == 0 ||
+          $("#file_ImageProduct").val().length == 0
+        ) {
+          alert("Vui lòng nhập tên và chọn hình");
+        } else {
+          $.post(
+            url + "/product/AddNew",
+            {
+              Name: $("#productName").val(),
+              Image: $("#file_ImageProduct").val(),
+            },
+            function (data) {
+              ///console.log(data);
+              if (data.kq == 1) {
+                loadProduct();
+              } else {
+                console.log("No ok");
+              }
+            }
+          );
+        }
+      });
+  
+      $(document).on("click", ".product", function () {
+        var hinhSrc = $(this).attr("srcHinh");
+        var nameProduct = $(this).html();
+        var idProduct = $(this).attr("productid");
+      
+        $("#product_Detail").attr("src", url + "/upload/" + hinhSrc);
+        $("#productName_Detail").val(nameProduct);
+        $("#file_ImageProduct_Details").val(hinhSrc);
+        $("#idProduct_Detail").val(idProduct);
+       
+      });
+  
+      $("#btn_Update_Product").click(function () {
+        $.post(
+          url + "/product/update",
+          {
+            idProduct: $("#idProduct_Detail").val(),
+            ProductName: $("#productName_Detail").val(),
+            ImageProduct: $("#file_ImageProduct_Details").val(),
+          },
+          function (data) {
+            if (data.kq == 1) {
+              //alert("Update");
+              loadProduct();
+            } else {
+              console.log(data);
+              alert("Update product failed: " + data.errMsg);
+            }
+          }
+        );
+      });
+  
+      $("#btn_Delete_Product").click(function () {
+        var chon = confirm("Are you sure you want to delete?");
+        if (chon) {
+          $.post(
+            url + "/product/delete",
+            { idProduct: $("#idProduct_Detail").val() },
+            function (data) {
+              if (data.kq == 1) {
+                loadProduct();
+              } else {
+                alert("Delete product failed: " + data.errMsg);
+              }
+            }
+          );
+        }
+      });
+    });
+  </script>
+  

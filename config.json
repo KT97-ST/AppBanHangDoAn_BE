@@ -4,7 +4,7 @@
         "server":"cluster0.ushreia.mongodb.net",
         "username":"kthanh",
         "password":"kthanh641",
-        "dbname":"AppRaoVat2022"
+        "dbname":"AppBanHang"
     },
     "mail":{
         "smtpserver":"",

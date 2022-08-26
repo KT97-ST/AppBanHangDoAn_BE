@@ -7,3 +7,4 @@ body{font-size: 14px; background-color: gainsboro;}
 #menu a:hover{ background-color: yellow; color: black; }
 .city:hover{background-color: darkgray;}
 .category:hover{background-color: darkgray;}
+.product:hover{background-color: darkgray;}

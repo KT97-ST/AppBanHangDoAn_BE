@@ -2,8 +2,10 @@ const mongoose = require("mongoose");
 
 const productSchema = new mongoose.Schema({
     Name: String,
+    Code: String,
     Image: String,
-    ExportPrice: Int,
+    ExportPrice: mongoose.Decimal128,
+    ImportPrice: mongoose.Decimal128,
 });
 
-module.exports = mongoose.model("Product", categorySchema);
+module.exports = mongoose.model("Product", productSchema);
