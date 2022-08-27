@@ -1,3 +1,61 @@
+<div class="container-fluid pt-4 px-4" id="form_AddNewCate">
+  <div class="col-sm-12 col-xl-6"></div>
+  <div class="bg-secondary rounded h-100 p-4">
+    <h6 class="mb-4">Danh sách Thành Phố</h6>
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+      <table class="table table-hover table-bordered table-striped mb-0">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+          </tr>
+        </thead>
+        <tbody id="city_List"></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row g-4">
+    <div class="col-sm-12 col-xl-6 p-4">
+      <div class="bg-secondary rounded h-100 p-4">
+        <h6 class="mb-4">Thêm mới</h6>
+        <div class="mb-3">
+          <label for="cityName" class="form-label">Tên</label>
+          <input type="text" class="form-control" id="cityName" />
+        </div>
+        <button
+          type="button"
+          class="btn btn-outline-primary m-2"
+          id="btn_AddNewCity"
+        >
+          Thêm mới
+        </button>
+      </div>
+    </div>
+    <div class="col-sm-12 col-xl-6 p-4">
+      <div class="bg-secondary rounded h-100 p-4">
+        <h6 class="mb-4">Cập Nhật</h6>
+        <div class="mb-3">
+          <input type="hidden" id="hid_cityID" value="" />
+          <label for="cateName_Detail" class="form-label">Tên</label>
+          <input type="text" class="form-control" id="cityName_upd" />
+        </div>
+        <button
+          type="button"
+          class="btn btn-outline-success m-2"
+          id="btn_UpdateCity"
+        >
+          Cập Nhật
+        </button>
+        <button
+          type="button"
+          class="btn btn-outline-danger m-2"
+          id="btn_DeleteCity"
+        >
+          Xóa
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 <script>
   $(document).ready(function () {
     var url = "http://localhost:3000";
@@ -6,16 +64,29 @@
         if (data2.kq == 1) {
           $("#city_List").html("");
           data2.list.forEach(function (city) {
+            // $("#city_List").append(
+            //   `
+            //           <li class="list-group-item city" cityID="` +
+            //     city._id +
+            //     `">` +
+            //     city.Name +
+            //     `</li>
+            //           `
+            // );
+
             $("#city_List").append(
               `
-                      <li class="list-group-item city" cityID="` +
+            <tr>
+                <td class="city" cityID="` +
                 city._id +
                 `">` +
                 city.Name +
-                `</li>
-                      `
+                `</td>
+            </tr>`
             );
           });
+        } else {
+          console.log("loi");
         }
       });
     }
@@ -26,6 +97,18 @@
       var Id_City = $(this).attr("cityid");
       $("#cityName_upd").val(Ten);
       $("#hid_cityID").val(Id_City);
+    });
+
+    $("#btn_AddNewCity").click(function () {
+      $.post(
+        url + "/city/add",
+        { Name: $("#cityName").val() },
+        function (data) {
+          if (data.kq == 1) {
+            loadCity();
+          }
+        }
+      );
     });
 
     $("#btn_UpdateCity").click(function () {
@@ -59,21 +142,3 @@
     });
   });
 </script>
-
-<div class="form-group">
-  <label for="cityName">Name:</label>
-  <input type="text" class="form-control" id="cityName" />
-  <button type="button" class="btn btn-primary" id="btn_AddNewCity">
-    Thêm
-  </button>
-</div>
-
-<ul class="list-group" id="city_List"></ul>
-
-<div class="form-group" id="city_formUpdate">
-  <input type="hidden" id="hid_cityID" value="" />
-  <label for="cityName_upd">Name:</label>
-  <input type="text" class="form-control" id="cityName_upd" />
-  <button type="button" class="btn btn-success" id="btn_UpdateCity">Sửa</button>
-  <button type="button" class="btn btn-danger" id="btn_DeleteCity">Xóa</button>
-</div>

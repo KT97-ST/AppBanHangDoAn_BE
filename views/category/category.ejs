@@ -1,121 +1,121 @@
-
 <div class="container-fluid pt-4 px-4" id="form_AddNewCate">
-  <div class="col-sm-12 col-xl-6">
-    
-  </div>
+  <div class="col-sm-12 col-xl-6"></div>
   <div class="bg-secondary rounded h-100 p-4">
-    <h6 class="mb-4">Hoverable Table</h6>
-    <table class="table table-hover">
+    <h6 class="mb-4">Danh sách nhóm sản phẩm</h6>
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+      <table class="table table-hover table-bordered table-striped mb-0">
         <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-            </tr>
+          <tr>
+            <th scope="col">Name</th>
+          </tr>
         </thead>
-        <tbody id="list_Cate">
-        </tbody>
-    </table>
+        <tbody id="list_Cate"></tbody>
+      </table>
+    </div>
   </div>
   <div class="row g-4">
-      <div class="col-sm-12 col-xl-6 p-4">
-          <div class="bg-secondary rounded h-100 p-4">
-              <h6 class="mb-4">Thêm mới</h6>
-                  <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">Tên</label>
-                      <input type="text" class="form-control" id="cateName">
-                  </div>
-                  <div class="mb-3">
-                    <label for="formFile" class="form-label">Hình ảnh</label>
-                    <input class="form-control bg-dark" type="file" id="hinhsp">
-                  </div>
-                  <img id="ImgCateNew" data-src="holder.js/100px250" class="img-fluid" alt="100%x250" style="height: 250px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22778%22%20height%3D%22250%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20778%20250%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_182d97126e5%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A39pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_182d97126e5%22%3E%3Crect%20width%3D%22778%22%20height%3D%22250%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22289.234375%22%20y%3D%22142.4%22%3E778x250%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
-                  <!-- <input
+    <div class="col-sm-12 col-xl-6 p-4">
+      <div class="bg-secondary rounded h-100 p-4">
+        <h6 class="mb-4">Thêm mới</h6>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Tên</label>
+          <input type="text" class="form-control" id="cateName" />
+        </div>
+        <div class="mb-3">
+          <label for="formFile" class="form-label">Hình ảnh</label>
+          <input class="form-control bg-dark" type="file" id="hinhsp" />
+        </div>
+        <img
+          id="ImgCateNew"
+          data-src="holder.js/100px250"
+          class="img-fluid"
+          alt="100%x250"
+          style="height: 250px; width: 100%; display: block"
+          src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22778%22%20height%3D%22250%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20778%20250%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_182d97126e5%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A39pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_182d97126e5%22%3E%3Crect%20width%3D%22778%22%20height%3D%22250%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22289.234375%22%20y%3D%22142.4%22%3E778x250%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
+          data-holder-rendered="true"
+        />
+        <!-- <input
                     type="button"
                     class="btn btn-primary"
                     id="btn_Add_New_Cate"
                     value="Thêm mới"/> -->
-                    <button type="button" class="btn btn-outline-primary m-2" id="btn_Add_New_Cate">Thêm mới</button>
-                  <input type="hidden" id="file_ImageCate" />
-                  <!-- <img id="ImgCateNew" width="100px" src="" /> -->
-          </div>
+        <button
+          type="button"
+          class="btn btn-outline-primary m-2"
+          id="btn_Add_New_Cate"
+        >
+          Thêm mới
+        </button>
+        <input type="hidden" id="file_ImageCate" />
+        <!-- <img id="ImgCateNew" width="100px" src="" /> -->
       </div>
-      <div class="col-sm-12 col-xl-6 p-4">
-          <div class="bg-secondary rounded h-100 p-4">
-              <h6 class="mb-4">Horizontal Form</h6>
-              <form>
-                  <div class="row mb-3">
-                      <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-                      <div class="col-sm-10">
-                          <input type="email" class="form-control" id="inputEmail3">
-                      </div>
-                  </div>
-                  <div class="row mb-3">
-                      <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-                      <div class="col-sm-10">
-                          <input type="password" class="form-control" id="inputPassword3">
-                      </div>
-                  </div>
-                  <fieldset class="row mb-3">
-                      <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
-                      <div class="col-sm-10">
-                          <div class="form-check">
-                              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked="">
-                              <label class="form-check-label" for="gridRadios1">
-                                  First radio
-                              </label>
-                          </div>
-                          <div class="form-check">
-                              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                              <label class="form-check-label" for="gridRadios2">
-                                  Second radio
-                              </label>
-                          </div>
-                      </div>
-                  </fieldset>
-                  <div class="row mb-3">
-                      <legend class="col-form-label col-sm-2 pt-0">Checkbox</legend>
-                      <div class="col-sm-10">
-                          <div class="form-check">
-                              <input class="form-check-input" type="checkbox" id="gridCheck1">
-                              <label class="form-check-label" for="gridCheck1">
-                                  Check me out
-                              </label>
-                          </div>
-                      </div>
-                  </div>
-                  <button type="submit" class="btn btn-primary">Sign in</button>
-              </form>
-          </div>
+    </div>
+    <div class="col-sm-12 col-xl-6 p-4">
+      <div class="bg-secondary rounded h-100 p-4">
+        <h6 class="mb-4">Cập Nhật</h6>
+        <div class="mb-3">
+          <label for="cateName_Detail" class="form-label">Tên</label>
+          <input type="text" class="form-control" id="cateName_Detail" />
+        </div>
+        <div class="mb-3">
+          <label for="formFile" class="form-label">Hình ảnh</label>
+          <input class="form-control bg-dark" type="file" id="hinhsp_Detail" />
+        </div>
+        <img
+          id="cate_Detail"
+          data-src="holder.js/100px250"
+          class="img-fluid"
+          alt="100%x250"
+          style="height: 250px; width: 100%; display: block"
+          src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22778%22%20height%3D%22250%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20778%20250%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_182d97126e5%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A39pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_182d97126e5%22%3E%3Crect%20width%3D%22778%22%20height%3D%22250%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22289.234375%22%20y%3D%22142.4%22%3E778x250%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
+          data-holder-rendered="true"
+        />
+        <!-- <input
+                    type="button"
+                    class="btn btn-primary"
+                    id="btn_Add_New_Cate"
+                    value="Thêm mới"/> -->
+        <button
+          type="button"
+          class="btn btn-outline-success m-2"
+          id="btn_Update_Cate"
+        >
+          Cập Nhật
+        </button>
+        <button
+          type="button"
+          class="btn btn-outline-danger m-2"
+          id="btn_Delete_Cate"
+        >
+          Xóa
+        </button>
+        <input type="hidden" id="file_ImageCate_Details" />
+        <input type="hidden" id="idCate_Detail" />
       </div>
+    </div>
   </div>
 </div>
 
 <script>
   $(document).ready(function () {
     var url = "http://localhost:3000";
-
     function loadCategory() {
       $.post(url + "/category", function (data2) {
         if (data2.kq == 1) {
           $("#list_Cate").html("");
           data2.CateList.forEach(function (category) {
-            // $("#list_Cate").append(
-            //   `
-            //           <li class="list-group-item category" srcHinh="` +
-            //     category.Image +
-            //     `" categoryID="` +
-            //     category._id +
-            //     `">` +
-            //     category.Name +
-            //     `</li>
-            //           `
-            // );
-
-            $("#list_Cate").append(`
+            $("#list_Cate").append(
+              `
             <tr>
-                <th scope="row">3</th>
-                <td class="category" srcHinh="`+category.Image+`" categoryID="`+category._id+`">`+ category.Name+`</td>
-            </tr>`);
+                <td class="category" srcHinh="` +
+                category.Image +
+                `" categoryID="` +
+                category._id +
+                `">` +
+                category.Name +
+                `</td>
+            </tr>`
+            );
           });
         } else {
           console.log("No ok");
@@ -154,10 +154,10 @@
       });
     });
 
-	  $("#hinhsp_Detail").change(function () {
+    $("#hinhsp_Detail").change(function () {
       var data = new FormData();
       jQuery.each(jQuery("#hinhsp_Detail")[0].files, function (i, file) {
-		console.log("hinhdaidien");
+        console.log("hinhdaidien");
         data.append("hinhdaidien", file);
       });
 
@@ -170,14 +170,17 @@
         method: "POST",
         type: "POST", // For jQuery < 1.9
         success: function (data) {
-			if(data.kq==1){
-                //console.log(data);
-                //$("#imgAvatar").attr("src","upload/" + data.file);
-                $("#cate_Detail").attr("src",url+`/upload/`+data.urlFile.filename);
-                $("#file_ImageCate_Details").val(data.urlFile.filename);
-            }else{
-                console.log("Upload fail!");
-            }
+          if (data.kq == 1) {
+            //console.log(data);
+            //$("#imgAvatar").attr("src","upload/" + data.file);
+            $("#cate_Detail").attr(
+              "src",
+              url + `/upload/` + data.urlFile.filename
+            );
+            $("#file_ImageCate_Details").val(data.urlFile.filename);
+          } else {
+            console.log("Upload fail!");
+          }
         },
       });
     });
@@ -211,16 +214,15 @@
       var hinhSrc = $(this).attr("srcHinh");
       var nameCate = $(this).html();
       var idCate = $(this).attr("categoryid");
-	
+
       $("#cate_Detail").attr("src", url + "/upload/" + hinhSrc);
       $("#cateName_Detail").val(nameCate);
       $("#file_ImageCate_Details").val(hinhSrc);
       $("#idCate_Detail").val(idCate);
-	 
     });
 
     $("#btn_Update_Cate").click(function () {
-		console.log($("#file_ImageCate_Details").val());
+      console.log($("#file_ImageCate_Details").val());
       $.post(
         url + "/category/update",
         {
@@ -257,5 +259,4 @@
       }
     });
   });
-
 </script>
