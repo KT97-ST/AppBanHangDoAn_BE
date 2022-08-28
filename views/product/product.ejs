@@ -6,6 +6,7 @@
       <table class="table table-hover table-bordered table-striped mb-0">
         <thead>
           <tr>
+            <th scope="col">STT</th>
             <th scope="col">Mã</th>
             <th scope="col">Tên</th>
             <th scope="col">Giá Nhập</th>
@@ -143,9 +144,10 @@
       $.post(url + "/product", function (data2) {
         if (data2.kq == 1) {
           $("#list_Product").html("");
+          var STT = 0;
           data2.ProductList.forEach(function (product) {
             console.log(product.ExportPrice["$numberDecimal"]);
-
+            STT++;
             $("#list_Product").append(
               `
             <tr class="product" srcHinh="` +
@@ -164,16 +166,19 @@
                 productImportPrice1="` +
                 product.ImportPrice["$numberDecimal"] +
                 `">
-              <td>` +
+                <td>` +
+                STT +
+                `</td>
+                <td>` +
                 product.Code +
                 `</td>
-              <td>` +
+                <td>` +
                 product.Name +
                 `</td>
-              <td>` +
+                <td>` +
                 product.ExportPrice["$numberDecimal"] +
                 `</td>
-              <td>` +
+                <td>` +
                 product.ImportPrice["$numberDecimal"] +
                 `</td>
             </tr>`

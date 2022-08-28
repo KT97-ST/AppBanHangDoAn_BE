@@ -10,6 +10,22 @@ var privatekey = "*kthanh641@";
 
 
 module.exports = function(app){
+
+    app.get("/customer", function(req, res){
+        res.render("admin_master", {content: "./customer/customer.ejs"});
+    });
+
+    // danh sách khách hàng
+    app.post("/customer", function(req, res){
+        User.find({Permissions: "1"}, function(err, data){
+            if(err){
+                res.json({kq:0, errMsg:err});
+            }else{
+                res.json({kq:1, CustomerList:data});
+            }
+        });
+    });
+
     app.post("/register", function(req, res){
         console.log("Post register");
         console.log( req.body );
