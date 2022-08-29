@@ -31,11 +31,13 @@ module.exports = function(app){
                 foreignField: '_id',
                 as: 'product'
                 }
-            }],
-          { OrderID : req.body.OrderID},function(err, data) {
+            },
+        ],
+        { OrderID : req.body.OrderID},
+        function(err, data) {
             if (err) throw err;
             res.json({kq:1, OrderDetails:data});
-          });
+        });
     });
 
     app.post("/orderdetails/update", function(req, res){

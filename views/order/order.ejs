@@ -172,6 +172,7 @@
             OrderID: orderID,
           },
           function (data) {
+            console.log(data);
             if (data.kq == 1) {
                 $("#list_OrderDetails").html("");
                 var STT = 0;
