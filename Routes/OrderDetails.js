@@ -1,5 +1,5 @@
 const OrderDetails = require("../Models/OrderDetails");
-
+const Order = require("../Models/Order");
 module.exports = function(app){
     app.get("/orderdetails", function(req, res){
         res.render("admin_master", {content: "./orderdetails/orderdetails.ejs"});
@@ -23,13 +23,19 @@ module.exports = function(app){
     });
 
     app.post("/orderdetails", function(req, res){
-        OrderDetails.find(function(err, data){
-            if(err){
-                res.json({kq:0, errMsg:err});
-            }else{
-                res.json({kq:1, orderDetailsList:data});
-            }
-        });
+        OrderDetails.aggregate([
+            { $lookup:
+                {
+                from: 'products',
+                localField: 'ProductID',
+                foreignField: '_id',
+                as: 'product'
+                }
+            }],
+          { OrderID : req.body.OrderID},function(err, data) {
+            if (err) throw err;
+            res.json({kq:1, OrderDetails:data});
+          });
     });
 
     app.post("/orderdetails/update", function(req, res){

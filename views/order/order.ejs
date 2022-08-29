@@ -15,124 +15,26 @@
           <tbody id="list_Order"></tbody>
         </table>
       </div>
-    </div>
-    <div class="row g-4">
-      <div class="col-sm-12 col-xl-6 p-4">
-        <div class="bg-secondary rounded h-100 p-4">
-          <h6 class="mb-4">Thêm mới</h6>
-          <div class="mb-3">
-            <label for="productCode" class="form-label">Mã</label>
-            <input type="text" class="form-control" id="productCode" />
-          </div>
-          <div class="mb-3">
-            <label for="productName" class="form-label">Tên</label>
-            <input type="text" class="form-control" id="productName" />
-          </div>
-          <div class="mb-3">
-            <label for="productName" class="form-label">Giá Nhập</label>
-            <input type="text" class="form-control" id="productImportPrice" />
-          </div>
-          <div class="mb-3">
-            <label for="productName" class="form-label">Giá Xuất</label>
-            <input type="text" class="form-control" id="productExportPrice" />
-          </div>
-          <div class="mb-3">
-            <label for="formFile" class="form-label">Hình ảnh</label>
-            <input class="form-control bg-dark" type="file" id="hinhsp" />
-          </div>
-          <img
-            id="ImgProductNew"
-            data-src="holder.js/100px250"
-            class="img-fluid"
-            alt="100%x250"
-            style="height: 250px; width: 100%; display: block"
-            src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22778%22%20height%3D%22250%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20778%20250%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_182d97126e5%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A39pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_182d97126e5%22%3E%3Crect%20width%3D%22778%22%20height%3D%22250%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22289.234375%22%20y%3D%22142.4%22%3E778x250%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
-            data-holder-rendered="true"
-          />
-          <!-- <input
-                      type="button"
-                      class="btn btn-primary"
-                      id="btn_Add_New_Cate"
-                      value="Thêm mới"/> -->
-          <button
-            type="button"
-            class="btn btn-outline-primary m-2"
-            id="btn_Add_New_Product"
-          >
-            Thêm mới
-          </button>
-          <input type="hidden" id="file_ImageProduct" />
-          <img id="ImgProductNew" width="100px" src="" />
+    </div><br>
+    <div class="bg-secondary rounded h-100 p-4">
+        <h6 class="mb-4">Chi tiết đơn hàng</h6>
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+          <table class="table table-hover table-bordered table-striped mb-0">
+            <thead>
+              <tr>
+                <th scope="col">STT</th>
+                <th scope="col">Sản phẩm</th>
+                <th scope="col">Số lượng</th>
+                <th scope="col">Đơn giá</th>
+                <th scope="col">Thành tiền</th>
+                <th scope="col">Ngày đặt</th>
+              </tr>
+            </thead>
+            <tbody id="list_OrderDetails"></tbody>
+          </table>
         </div>
+        <h6 class="mb-4" id="tongTien">Tổng tiền: 00</h6>
       </div>
-      <div class="col-sm-12 col-xl-6 p-4">
-        <div class="bg-secondary rounded h-100 p-4">
-          <h6 class="mb-4">Cập Nhật</h6>
-          <div class="mb-3">
-            <label for="productCode_Detail" class="form-label">Mã</label>
-            <input type="text" class="form-control" id="productCode_Detail" />
-          </div>
-          <div class="mb-3">
-            <label for="productName_Detail" class="form-label">Tên</label>
-            <input type="text" class="form-control" id="productName_Detail" />
-          </div>
-          <div class="mb-3">
-            <label for="productImportPrice_Detail" class="form-label"
-              >Giá Nhập</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              id="productImportPrice_Detail"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="productExportPrice_Detail" class="form-label"
-              >Giá Xuất</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              id="productExportPrice_Detail"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="formFile" class="form-label">Hình ảnh</label>
-            <input class="form-control bg-dark" type="file" id="hinhsp_Detail" />
-          </div>
-          <img
-            id="product_Detail"
-            data-src="holder.js/100px250"
-            class="img-fluid"
-            alt="100%x250"
-            style="height: 250px; width: 100%; display: block"
-            src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22778%22%20height%3D%22250%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20778%20250%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_182d97126e5%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A39pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_182d97126e5%22%3E%3Crect%20width%3D%22778%22%20height%3D%22250%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22289.234375%22%20y%3D%22142.4%22%3E778x250%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
-            data-holder-rendered="true"
-          />
-          <!-- <input
-                      type="button"
-                      class="btn btn-primary"
-                      id="btn_Add_New_Cate"
-                      value="Thêm mới"/> -->
-          <button
-            type="button"
-            class="btn btn-outline-success m-2"
-            id="btn_Update_Product"
-          >
-            Cập Nhật
-          </button>
-          <button
-            type="button"
-            class="btn btn-outline-danger m-2"
-            id="btn_Delete_Product"
-          >
-            Xóa
-          </button>
-          <input type="hidden" id="file_ImageProduct_Details" />
-          <input type="hidden" id="idProduct_Detail" />
-        </div>
-      </div>
-    </div>
   </div>
   
   <script>
@@ -141,7 +43,6 @@
   
       function loadOrder() {
         $.post(url + "/order", function (data2) {
-            console.log(data2);
           if (data2.kq == 1) {
             $("#list_Order").html("");
             var STT = 0;
@@ -150,7 +51,7 @@
               $("#list_Order").append(
                 `
               <tr class="order"
-                  orderCode1="`+order.Code +`">
+                  orderCode1="`+order.Code +`" orderId1="`+order.user[0]._id+`">
                   <td>` +
                   STT +
                   `</td>
@@ -158,7 +59,7 @@
                     order.Code +
                   `</td>
                   <td>` +
-                    order.CustomerID +
+                    order.user[0].Name +
                   `</td>
                   <td>` +
                     order.Orderdate +
@@ -262,21 +163,53 @@
         }
       });
   
-      $(document).on("click", ".product", function () {
-        var hinhSrc = $(this).attr("srcHinh");
-        var nameProduct = $(this).attr("productName1");
-        var code = $(this).attr("productCode1");
-        var Eprice = $(this).attr("productExportPrice1");
-        var Iprice = $(this).attr("productImportPrice1");
-        var idProduct = $(this).attr("productid");
-        console.log(Eprice.val);
-        $("#product_Detail").attr("src", url + "/upload/" + hinhSrc);
-        $("#productCode_Detail").val(code);
-        $("#productName_Detail").val(nameProduct);
-        $("#file_ImageProduct_Details").val(hinhSrc);
-        $("#productExportPrice_Detail").val(Eprice);
-        $("#productImportPrice_Detail").val(Iprice);
-        $("#idProduct_Detail").val(idProduct);
+      $(document).on("click", ".order", function () {
+        var orderID = $(this).attr("orderId1");
+        console.log(orderID);
+        $.post(
+          url + "/orderdetails",
+          {
+            OrderID: orderID,
+          },
+          function (data) {
+            if (data.kq == 1) {
+                $("#list_OrderDetails").html("");
+                var STT = 0;
+                var tongTien = 0;
+                data.OrderDetails.forEach(function (orderDetails) {  
+                    tongTien+=  orderDetails.product[0].ExportPrice["$numberDecimal"]*orderDetails.Quantity ;
+                    STT++;
+                    $("#list_OrderDetails").append(
+                        `<tr class="orderDetails">
+                            <td>` +
+                            STT +
+                            `</td>
+                            <td>` +
+                                orderDetails.product[0].Name +
+                            `</td>
+                            <td>` +
+                                orderDetails.Quantity +
+                            `</td>
+                            <td>` +
+                                orderDetails.product[0].ExportPrice["$numberDecimal"] + 
+                            `</td>
+                            <td>` +
+                                orderDetails.product[0].ExportPrice["$numberDecimal"]*orderDetails.Quantity + 
+                            `</td>
+                            <td>` +
+                                orderDetails.Orderdate + 
+                            `</td>
+                        </tr>`
+                    );
+                    });
+                $("#tongTien").html("");
+                $("#tongTien").append("Tổng tiền: " +tongTien+ " VNĐ");    
+                
+            } else {
+              console.log(data);
+            }
+          }
+        );
       });
   
       $("#btn_Update_Product").click(function () {

@@ -22,27 +22,20 @@ module.exports = function(app){
     });
 
     app.post("/order", function(req, res){
-        // Order.find(function(err, data){
-        //     if(err){
-        //         res.json({kq:0, errMsg:err});
-        //     }else{
-        //         res.json({kq:1, orderList:data});
-        //     }
-        // });
-        // Order.aggregate([
-        //     { $lookup:
-        //        {
-        //          from: 'Users',
-        //          localField: 'CustomerID',
-        //          foreignField: '_id',
-        //          as: 'User'
-        //        }
-        //      }
-        //     ], function(err, data) {
-        //         if (err) throw err;
-        //         console.log(data);
-        //         res.json({kq:1, orderList:data});
-        //       });
+        Order.aggregate([
+            { $lookup:
+               {
+                 from: 'users',
+                 localField: 'CustomerID',
+                 foreignField: '_id',
+                 as: 'user'
+               }
+             }
+            ], function(err, data) {
+                if (err) throw err;
+                //console.log(data);
+                res.json({kq:1, orderList:data});
+              });
     });
 
     app.post("/order/update", function(req, res){
