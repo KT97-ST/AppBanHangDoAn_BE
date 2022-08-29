@@ -26,6 +26,7 @@ module.exports = function(app){
         });
     });
 
+    // add new
     app.post("/register", function(req, res){
         console.log("Post register");
         console.log( req.body );
@@ -74,6 +75,34 @@ module.exports = function(app){
         });
     });
 
+    app.post("/customer/update", function(req, res){
+        User.findByIdAndUpdate(req.body.idCustomer, {
+            Username:   req.body.Username,
+            // Password:   hash,
+            Name    :   req.body.Name,
+            Image   :   req.body.Image,
+            Email   :   req.body.Email,
+            Address :   req.body.Address,
+            PhoneNumber:req.body.PhoneNumber,
+        }, function(err){
+            if(err){
+                res.json({kq:0, errMsg:err});
+            }else{
+                res.json({kq:1});
+            }
+        });
+    });
+
+    app.post("/customer/delete", function(req, res){
+        User.findOneAndDelete({_id:req.body.idCustomer}, function(err){
+            if(err){
+                res.json({kq:0, errMsg:err});
+            }else{
+                res.json({kq:1});
+            }
+        });
+    });
+  
     app.post("/login", function(req, res){
         // check username tồn tại hay không
         User.findOne({Username:req.body.Username}, function(err, data){

@@ -28,7 +28,7 @@
         </div>
         <div class="mb-3">
           <label for="customerPassword" class="form-label">Mật khẩu</label>
-          <input type="text" class="form-control" id="customerPassword" />
+          <input type="password" class="form-control" id="customerPassword" />
         </div>
         <div class="mb-3">
           <label for="customerName" class="form-label">Tên</label>
@@ -77,6 +77,71 @@
         <img id="ImgCustomerNew" width="100px" src="" />
       </div>
     </div>
+    <div class="col-sm-12 col-xl-6 p-4">
+      <div class="bg-secondary rounded h-100 p-4">
+        <h6 class="mb-4">Cập Nhật</h6>
+        <div class="mb-3">
+          <label for="customerUsername_Details" class="form-label">Tên đăng nhập</label>
+          <input type="text" class="form-control" id="customerUsername_Details" />
+        </div>
+        <div class="mb-3">
+          <label for="customerPassword_Details" class="form-label">Mật khẩu</label>
+          <input type="password" class="form-control" id="customerPassword_Details" disabled/>
+        </div>
+        <div class="mb-3">
+          <label for="customerName_Details" class="form-label">Tên</label>
+          <input type="text" class="form-control" id="customerName_Details" />
+        </div>
+        <div class="mb-3">
+          <label for="customerEmail_Details" class="form-label">Email</label>
+          <input type="email" class="form-control" id="customerEmail_Details" />
+        </div>
+        <div class="mb-3">
+          <label for="customerAddress_Details" class="form-label">Địa chỉ</label>
+          <input type="text" class="form-control" id="customerAddress_Details" />
+        </div>
+        <div class="mb-3">
+          <label for="customerPhoneNumber_Details" class="form-label"
+            >Số điện thoại</label
+          >
+          <input type="text" class="form-control" id="customerPhoneNumber_Details" />
+        </div>
+        <div class="mb-3">
+          <label for="formFile" class="form-label">Hình ảnh</label>
+          <input class="form-control bg-dark" type="file" id="hinhsp_Detail" />
+        </div>
+        <img
+          id="customer_Detail"
+          data-src="holder.js/100px250"
+          class="img-fluid"
+          alt="100%x250"
+          style="height: 250px; width: 100%; display: block"
+          src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22778%22%20height%3D%22250%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20778%20250%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_182d97126e5%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A39pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_182d97126e5%22%3E%3Crect%20width%3D%22778%22%20height%3D%22250%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22289.234375%22%20y%3D%22142.4%22%3E778x250%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
+          data-holder-rendered="true"
+        />
+        <!-- <input
+                      type="button"
+                      class="btn btn-primary"
+                      id="btn_Add_New_Cate"
+                      value="Thêm mới"/> -->
+        <button
+          type="button"
+          class="btn btn-outline-success  m-2"
+          id="btn_Update_Customer"
+        >
+          Cập Nhật
+        </button>
+        <button
+        type="button"
+        class="btn btn-outline-danger m-2"
+        id="btn_Delete_Customer"
+      >
+        Xóa
+      </button>
+        <input type="hidden" id="file_ImageCustomer_Details" />
+        <input type="hidden" id="idCustomer_Detail" />
+      </div>
+    </div>
   </div>
 </div>
 
@@ -100,6 +165,9 @@
                 customer._id +
                 `" customerUsername1="` +
                 customer.Username +
+                `"
+                customerPassword1="` +
+                customer.Password +
                 `"
                 customerName1="` +
                 customer.Name +
@@ -188,9 +256,9 @@
         type: "POST", // For jQuery < 1.9
         success: function (data) {
           if (data.kq == 1) {
-            //console.log(data);
+            console.log(data);
             //$("#imgAvatar").attr("src","upload/" + data.file);
-            $("#product_Detail").attr(
+            $("#customer_Detail").attr(
               "src",
               url + `/upload/` + data.urlFile.filename
             );
@@ -226,6 +294,71 @@
               loadCustomer();
             } else {
               console.log("No ok");
+            }
+          }
+        );
+      }
+    });
+  
+    $(document).on("click", ".customer", function () {
+      var hinhSrc = $(this).attr("srcHinh");
+      var Username = $(this).attr("customerusername1");
+      var Password = $(this).attr("customerpassword1");
+      var nameCustomer = $(this).attr("customername1");
+      var email = $(this).attr("customeremail1");
+      var address = $(this).attr("customeraddress1");
+      var phone = $(this).attr("customerphonenumber1");
+      var customerid = $(this).attr("customerid");
+      
+      $("#ImgCustomerDetails").attr("src", url + "/upload/" + hinhSrc);
+      $("#customerUsername_Details").val(Username);
+      $("#customerPassword_Details").val(Password);
+      $("#customerName_Details").val(nameCustomer);
+      $("#customerEmail_Details").val(email);
+      $("#productAddress_Details").val(address);
+      $("#productPhoneNumber_Details").val(phone);
+      $("#file_ImageCate_Details").val(hinhSrc);
+      $("#idCustomer_Detail").val(customerid);
+	 
+    });
+
+    $("#btn_Update_Customer").click(function () {
+		console.log($("#file_ImageCustomer_Details").val());
+      $.post(
+        url + "/customer/update",
+        {
+          idCustomer: $("#idCustomer_Detail").val(),
+          Username: $("#customerUsername_Details").val(),
+          // Password: $("#customerPassword").val(),
+          Name: $("#customerName_Details").val(),
+          Image: $("#file_ImageCustome_Detailsr").val(),
+          Email: $("#customerEmail_Details").val(),
+          Address: $("#customerAddress_Details").val(),
+          PhoneNumber: $("#customerPhoneNumber_Details").val(),
+        },
+        function (data) {
+          if (data.kq == 1) {
+            //alert("Update");
+            loadCustomer();
+          } else {
+            console.log(data);
+            alert("Update customer failed: " + data.errMsg);
+          }
+        }
+      );
+    });
+
+    $("#btn_Delete_Customer").click(function () {
+      var chon = confirm("Are you sure you want to delete?");
+      if (chon) {
+        $.post(
+          url + "/customer/delete",
+          { idCustomer: $("#idCustomer_Detail").val() },
+          function (data) {
+            if (data.kq == 1) {
+              loadCustomer();
+            } else {
+              alert("Delete customer failed: " + data.errMsg);
             }
           }
         );
