@@ -1,5 +1,7 @@
 const OrderDetails = require("../Models/OrderDetails");
 const Order = require("../Models/Order");
+const  ObjectID = require('mongodb').ObjectId;
+
 module.exports = function(app){
     app.get("/orderdetails", function(req, res){
         res.render("admin_master", {content: "./orderdetails/orderdetails.ejs"});
@@ -23,7 +25,12 @@ module.exports = function(app){
     });
 
     app.post("/orderdetails", function(req, res){
-        OrderDetails.aggregate([
+         OrderDetails.aggregate([
+            {
+                $match:{
+                    OrderID : new ObjectID(req.body.OrderID)
+                }
+            },
             { $lookup:
                 {
                 from: 'products',
@@ -33,11 +40,12 @@ module.exports = function(app){
                 }
             },
         ],
-        { OrderID : req.body.OrderID},
         function(err, data) {
             if (err) throw err;
             res.json({kq:1, OrderDetails:data});
         });
+
+
     });
 
     app.post("/orderdetails/update", function(req, res){

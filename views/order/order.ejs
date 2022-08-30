@@ -51,7 +51,7 @@
               $("#list_Order").append(
                 `
               <tr class="order"
-                  orderCode1="`+order.Code +`" orderId1="`+order.user[0]._id+`">
+                  orderCode1="`+order.Code +`" orderId1="`+order._id+`">
                   <td>` +
                   STT +
                   `</td>
@@ -64,7 +64,9 @@
                   <td>` +
                     order.Orderdate +
                   `</td>
-              </tr>`
+              </tr>
+              `
+              
               );
             });
           } else {
