@@ -38,3 +38,4 @@ require("./Routes/Post")(app);
 require("./Routes/Product")(app);
 require("./Routes/Order")(app);
 require("./Routes/OrderDetails")(app);
+require("./Routes/Dashboard")(app);
