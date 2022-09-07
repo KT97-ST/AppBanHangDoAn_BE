@@ -142,11 +142,11 @@
 
     function loadProduct() {
       $.post(url + "/product", function (data2) {
+       
         if (data2.kq == 1) {
           $("#list_Product").html("");
           var STT = 0;
           data2.ProductList.forEach(function (product) {
-            console.log(product.ExportPrice["$numberDecimal"]);
             STT++;
             $("#list_Product").append(
               `

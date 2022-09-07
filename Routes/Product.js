@@ -32,6 +32,16 @@ module.exports = function(app){
         });
     });
 
+    app.post("/product1", function(req, res){
+        Product.find(function(err, data){
+            if(err){
+                res.json({kq:0, errMsg:err});
+            }else{
+                res.json({kq:1, ProductList:data});
+            }
+        });
+    });
+
     app.post("/product/update", function(req, res){
         Product.findByIdAndUpdate(req.body.idProduct, {
             Name: req.body.Name,
