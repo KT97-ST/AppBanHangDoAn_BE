@@ -7,11 +7,10 @@ module.exports = function(app){
 
     app.post("/product/AddNew", function(req, res){
         var newProduct = Product({
-            Name: req.body.Name,
-            Code: req.body.Code,
-            Image: req.body.Image,
-            ExportPrice: req.body.ExportPrice,
-            ImportPrice: req.body.ImportPrice,
+            name: req.body.name,
+            price: req.body.price,
+            unit: req.body.unit,
+            image: req.body.image,
         });
         newProduct.save(function(err){
             if(err){
@@ -32,23 +31,22 @@ module.exports = function(app){
         });
     });
 
-    app.post("/product1", function(req, res){
+    app.get("/productlist", function(req, res){
         Product.find(function(err, data){
             if(err){
                 res.json({kq:0, errMsg:err});
             }else{
-                res.json({kq:1, ProductList:data});
+                res.json(data);
             }
         });
     });
 
     app.post("/product/update", function(req, res){
         Product.findByIdAndUpdate(req.body.idProduct, {
-            Name: req.body.Name,
-            Code: req.body.Code,
-            Image: req.body.Image,
-            ExportPrice: req.body.ExportPrice,
-            ImportPrice: req.body.ImportPrice,
+            name: req.body.name,
+            price: req.body.price,
+            unit: req.body.unit,
+            image: req.body.image,
         }, function(err){
             if(err){
                 res.json({kq:0, errMsg:err});

@@ -1,10 +1,10 @@
 {
     "domain":"http://localhost:3000",
     "mongodb":{
-        "server":"cluster0.ushreia.mongodb.net",
+        "server":"cluster0.5qsxmxj.mongodb.net",
         "username":"kthanh",
-        "password":"kthanh641",
-        "dbname":"AppBanHang"
+        "password":"kthanh",
+        "dbname":"AppBanHang01"
     },
     "mail":{
         "smtpserver":"",

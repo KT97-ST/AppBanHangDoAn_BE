@@ -7,10 +7,9 @@
         <thead>
           <tr>
             <th scope="col">STT</th>
-            <th scope="col">Mã</th>
             <th scope="col">Tên</th>
-            <th scope="col">Giá Nhập</th>
-            <th scope="col">Giá Xuất</th>
+            <th scope="col">Giá</th>
+            <th scope="col">Don vi</th>
           </tr>
         </thead>
         <tbody id="list_Product"></tbody>
@@ -22,20 +21,16 @@
       <div class="bg-secondary rounded h-100 p-4">
         <h6 class="mb-4">Thêm mới</h6>
         <div class="mb-3">
-          <label for="productCode" class="form-label">Mã</label>
-          <input type="text" class="form-control" id="productCode" />
-        </div>
-        <div class="mb-3">
           <label for="productName" class="form-label">Tên</label>
           <input type="text" class="form-control" id="productName" />
         </div>
         <div class="mb-3">
-          <label for="productName" class="form-label">Giá Nhập</label>
-          <input type="text" class="form-control" id="productImportPrice" />
+          <label for="productPrice" class="form-label">Giá</label>
+          <input type="text" class="form-control" id="productPrice" />
         </div>
         <div class="mb-3">
-          <label for="productName" class="form-label">Giá Xuất</label>
-          <input type="text" class="form-control" id="productExportPrice" />
+          <label for="productUnit" class="form-label">Don vi</label>
+          <input type="text" class="form-control" id="productUnit" />
         </div>
         <div class="mb-3">
           <label for="formFile" class="form-label">Hình ảnh</label>
@@ -70,31 +65,27 @@
       <div class="bg-secondary rounded h-100 p-4">
         <h6 class="mb-4">Cập Nhật</h6>
         <div class="mb-3">
-          <label for="productCode_Detail" class="form-label">Mã</label>
-          <input type="text" class="form-control" id="productCode_Detail" />
-        </div>
-        <div class="mb-3">
           <label for="productName_Detail" class="form-label">Tên</label>
           <input type="text" class="form-control" id="productName_Detail" />
         </div>
         <div class="mb-3">
-          <label for="productImportPrice_Detail" class="form-label"
-            >Giá Nhập</label
+          <label for="productPrice_Detail" class="form-label"
+            >Giá</label
           >
           <input
             type="text"
             class="form-control"
-            id="productImportPrice_Detail"
+            id="productPrice_Detail"
           />
         </div>
         <div class="mb-3">
-          <label for="productExportPrice_Detail" class="form-label"
-            >Giá Xuất</label
+          <label for="productUnit_Detail" class="form-label"
+            >Don vi</label
           >
           <input
             type="text"
             class="form-control"
-            id="productExportPrice_Detail"
+            id="productUnit_Detail"
           />
         </div>
         <div class="mb-3">
@@ -151,35 +142,29 @@
             $("#list_Product").append(
               `
             <tr class="product" srcHinh="` +
-                product.Image +
+                product.image +
                 `" productID="` +
                 product._id +
                 `" productName1="` +
-                product.Name +
+                product.name +
                 `"
-                productCode1="` +
-                product.Code +
+                productPrice1="` +
+                product.price +
                 `"
-                productExportPrice1="` +
-                product.ExportPrice["$numberDecimal"] +
-                `"
-                productImportPrice1="` +
-                product.ImportPrice["$numberDecimal"] +
+                productUnit="` +
+                product.unit +
                 `">
                 <td>` +
                 STT +
                 `</td>
                 <td>` +
-                product.Code +
+                product.name +
                 `</td>
                 <td>` +
-                product.Name +
+                product.price +
                 `</td>
                 <td>` +
-                product.ExportPrice["$numberDecimal"] +
-                `</td>
-                <td>` +
-                product.ImportPrice["$numberDecimal"] +
+                product.unit +
                 `</td>
             </tr>`
             );
@@ -262,11 +247,10 @@
         $.post(
           url + "/product/AddNew",
           {
-            Code: $("#productCode").val(),
-            Name: $("#productName").val(),
-            ExportPrice: $("#productExportPrice").val(),
-            ImportPrice: $("#productImportPrice").val(),
-            Image: $("#file_ImageProduct").val(),
+            name: $("#productName").val(),
+            price: $("#productPrice").val(),
+            unit: $("#productUnit").val(),
+            image: $("#file_ImageProduct").val(),
           },
           function (data) {
             ///console.log(data);
@@ -283,17 +267,15 @@
     $(document).on("click", ".product", function () {
       var hinhSrc = $(this).attr("srcHinh");
       var nameProduct = $(this).attr("productName1");
-      var code = $(this).attr("productCode1");
-      var Eprice = $(this).attr("productExportPrice1");
-      var Iprice = $(this).attr("productImportPrice1");
+      var price = $(this).attr("productPrice1");
+      var unit = $(this).attr("productUnit1");
       var idProduct = $(this).attr("productid");
       console.log(Eprice.val);
       $("#product_Detail").attr("src", url + "/upload/" + hinhSrc);
-      $("#productCode_Detail").val(code);
       $("#productName_Detail").val(nameProduct);
       $("#file_ImageProduct_Details").val(hinhSrc);
-      $("#productExportPrice_Detail").val(Eprice);
-      $("#productImportPrice_Detail").val(Iprice);
+      $("#productPrice_Detail").val(price);
+      $("#productUnit_Detail").val(unit);
       $("#idProduct_Detail").val(idProduct);
     });
 
@@ -302,11 +284,10 @@
         url + "/product/update",
         {
           idProduct: $("#idProduct_Detail").val(),
-          Name: $("#productName_Detail").val(),
-          Code: $("#productCode_Detail").val(),
-          ExportPrice: $("#productExportPrice_Detail").val(),
-          ImportPrice: $("#productImportPrice_Detail").val(),
-          ImageProduct: $("#file_ImageProduct_Details").val(),
+          name: $("#productName_Detail").val(),
+          price: $("#productPrice_Detail").val(),
+          unit: $("#productUnit_Detail").val(),
+          image: $("#file_ImageProduct_Details").val(),
         },
         function (data) {
           if (data.kq == 1) {
